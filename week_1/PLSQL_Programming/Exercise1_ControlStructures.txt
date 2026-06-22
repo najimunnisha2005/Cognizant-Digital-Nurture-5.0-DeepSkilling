@@ -1,0 +1,105 @@
+CREATE TABLE Customers (
+    CustomerID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    DOB DATE,
+    Balance NUMBER,
+    LastModified DATE
+);
+
+CREATE TABLE Loans (
+    LoanID NUMBER PRIMARY KEY,
+    CustomerID NUMBER,
+    LoanAmount NUMBER,
+    InterestRate NUMBER,
+    StartDate DATE,
+    EndDate DATE
+);
+
+INSERT INTO Customers
+VALUES (1, 'Robert', TO_DATE('1950-01-01','YYYY-MM-DD'), 20000, SYSDATE);
+
+INSERT INTO Customers
+VALUES (2, 'John', TO_DATE('1985-05-15','YYYY-MM-DD'), 1000, SYSDATE);
+
+INSERT INTO Loans
+VALUES (1, 1, 5000, 8, SYSDATE, ADD_MONTHS(SYSDATE, 60));
+
+INSERT INTO Loans
+VALUES (2, 2, 10000, 7, SYSDATE, ADD_MONTHS(SYSDATE, 48));
+
+DECLARE
+    v_age NUMBER;
+BEGIN
+    FOR cust IN (SELECT CustomerID, DOB FROM Customers) LOOP
+
+        v_age := FLOOR(MONTHS_BETWEEN(SYSDATE, cust.DOB)/12);
+
+        IF v_age > 60 THEN
+            UPDATE Loans
+            SET InterestRate = InterestRate - 1
+            WHERE CustomerID = cust.CustomerID;
+
+            DBMS_OUTPUT.PUT_LINE(
+                'Discount applied to Customer ID: ' || cust.CustomerID
+            );
+        END IF;
+
+    END LOOP;
+
+    COMMIT;
+END;
+/
+
+ALTER TABLE Customers
+ADD IsVIP VARCHAR2(5);
+
+BEGIN
+    FOR cust IN (SELECT CustomerID, Balance FROM Customers) LOOP
+
+        IF cust.Balance > 10000 THEN
+            UPDATE Customers
+            SET IsVIP = 'TRUE'
+            WHERE CustomerID = cust.CustomerID;
+
+            DBMS_OUTPUT.PUT_LINE(
+                'Customer ' || cust.CustomerID || ' promoted to VIP'
+            );
+        END IF;
+
+    END LOOP;
+
+    COMMIT;
+END;
+/
+
+SELECT CustomerID, Name, Balance, IsVIP
+FROM Customers;
+
+INSERT INTO Loans
+VALUES (
+    3,
+    2,
+    3000,
+    6,
+    SYSDATE,
+    SYSDATE + 15
+);
+BEGIN
+  FOR loan_rec IN (
+      SELECT LoanID, CustomerID, EndDate
+      FROM Loans
+      WHERE EndDate BETWEEN SYSDATE AND SYSDATE + 30
+  ) LOOP
+
+      DBMS_OUTPUT.PUT_LINE(
+          'Reminder: Customer ID '
+          || loan_rec.CustomerID ||
+          ' has Loan ID '
+          || loan_rec.LoanID ||
+          ' due on '
+          || TO_CHAR(loan_rec.EndDate,'DD-MON-YYYY')
+      );
+
+  END LOOP;
+END;
+/
