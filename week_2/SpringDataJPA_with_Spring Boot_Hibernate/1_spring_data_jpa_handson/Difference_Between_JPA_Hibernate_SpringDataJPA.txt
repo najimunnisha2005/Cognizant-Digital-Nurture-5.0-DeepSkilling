@@ -1,0 +1,91 @@
+1. JPA (Java Persistence API)
+
+Definition:
+
+JPA is a Java specification used for persisting, reading, and managing data between Java objects and relational databases.
+
+Key Points:
+
+JPA is a specification, not an implementation.
+Defines standard annotations such as:
+    @Entity
+    @Table
+    @Id
+    @Column   
+Requires an implementation provider such as Hibernate.
+
+Example 
+
+@Entity
+@Table(name="country")
+public class Country {
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Hibernate
+
+Definition:
+
+Hibernate is an ORM (Object Relational Mapping) framework that implements JPA.
+
+Key Points:
+Converts Java objects into database records.
+Provides actual implementation of JPA.
+Handles SQL generation automatically.
+Requires manual session and transaction management when used directly.
+
+Hibernate Example:
+
+Session session = factory.openSession();
+Transaction tx = session.beginTransaction();
+session.save(employee);
+tx.commit();
+session.close();
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Spring Data JPA
+
+Definition:
+
+Spring Data JPA is a framework built on top of JPA that reduces boilerplate code.
+
+Key Points:
+
+Uses Hibernate internally.
+Provides repository interfaces.
+Automatically generates CRUD operations.
+Simplifies transaction management.
+Reduces coding effort.
+Spring Data JPA Example
+
+Repository:
+
+public interface EmployeeRepository
+        extends JpaRepository<Employee, Integer> {
+}
+
+Service:
+
+@Autowired
+private EmployeeRepository employeeRepository;
+
+@Transactional
+public void addEmployee(Employee employee) {
+    employeeRepository.save(employee);
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Relationship Between Them:
+
+Application
+      ↓
+Spring Data JPA
+      ↓
+Hibernate
+      ↓
+JPA Specification
+      ↓
+Database
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Conclusion:
+
+JPA (Java Persistence API) is a specification that defines standard rules and guidelines for persisting Java objects into relational databases. Since JPA is only a specification, it requires an implementation provider such as Hibernate. Hibernate is an ORM (Object Relational Mapping) framework that implements JPA and provides the actual functionality for interacting with databases. Spring Data JPA is built on top of JPA and Hibernate and further simplifies database operations by reducing boilerplate code, providing repository support, automatic CRUD operations, and transaction management. Together, JPA, Hibernate, and Spring Data JPA make database access in Java applications easier, more efficient, and more maintainable.
