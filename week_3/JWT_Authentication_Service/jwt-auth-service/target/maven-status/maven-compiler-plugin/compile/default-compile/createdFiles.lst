@@ -1,5 +1,0 @@
-com\cognizant\jwtauthservice\config\SecurityConfig.class
-com\cognizant\jwtauthservice\JwtAuthServiceApplication.class
-com\cognizant\jwtauthservice\model\AuthenticationResponse.class
-com\cognizant\jwtauthservice\util\JwtUtil.class
-com\cognizant\jwtauthservice\controller\AuthenticationController.class
