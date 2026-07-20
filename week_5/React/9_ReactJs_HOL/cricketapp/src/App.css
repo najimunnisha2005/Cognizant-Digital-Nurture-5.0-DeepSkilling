@@ -1,0 +1,26 @@
+.App {
+  margin: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: navy;
+}
+
+h2 {
+  color: darkgreen;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+hr {
+  margin: 20px 0;
+}
