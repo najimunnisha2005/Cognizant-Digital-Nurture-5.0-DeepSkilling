@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f4f6f9;
+  color: #1f2937;
+}
+a { color: inherit; }
+.container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+}
+button:disabled { background: #9ca3af; cursor: not-allowed; }
+input, select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 100%;
+}
+.ng-invalid.ng-touched { border-color: #dc2626; }
+.ng-valid.ng-touched { border-color: #16a34a; }

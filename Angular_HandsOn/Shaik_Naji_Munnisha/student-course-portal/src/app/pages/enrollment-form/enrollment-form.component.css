@@ -1,0 +1,7 @@
+.field { margin-bottom: 1rem; max-width: 380px; }
+.field label { display: block; margin-bottom: 0.25rem; font-weight: 500; }
+.error { color: #dc2626; font-size: 0.8rem; display: block; }
+.success { color: #16a34a; font-weight: 500; }
+.actions { display: flex; gap: 0.5rem; }
+.actions button:last-child { background: #6b7280; }
+.checkbox label { font-weight: normal; display: flex; align-items: center; gap: 0.4rem; }

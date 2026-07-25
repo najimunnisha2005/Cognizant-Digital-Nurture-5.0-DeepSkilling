@@ -1,0 +1,29 @@
+<section class="hero">
+  <h1>Welcome to the {{ portalName }}</h1>
+  <p class="subtitle">Manage your enrolled courses, check your academic progress, and explore new learning opportunities.</p>
+
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-label">Courses Available</span>
+      <strong class="stat-value">{{ coursesAvailable }}</strong>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Enrolled</span>
+      <strong class="stat-value">{{ enrolled }}</strong>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">GPA</span>
+      <strong class="stat-value">{{ gpa }}</strong>
+    </div>
+  </div>
+
+  <button [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+  <p *ngIf="message">{{ message }}</p>
+
+  <div class="search">
+    <input [(ngModel)]="searchTerm" placeholder="Search courses..." name="searchTerm" />
+    <p>Searching for: {{ searchTerm }}</p>
+  </div>
+
+  <a routerLink="/courses">Browse all courses &rarr;</a>
+</section>

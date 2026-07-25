@@ -1,0 +1,8 @@
+<a routerLink="/courses">&larr; Back to courses</a>
+<div *ngIf="course">
+  <h2>{{ course.name }}</h2>
+  <p>Code: {{ course.code }}</p>
+  <p>Credits: {{ course.credits }}</p>
+  <p>Status: {{ course.gradeStatus }}</p>
+</div>
+<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>

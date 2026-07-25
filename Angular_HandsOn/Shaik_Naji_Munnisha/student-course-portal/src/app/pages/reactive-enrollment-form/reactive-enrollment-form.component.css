@@ -1,0 +1,5 @@
+.field { margin-bottom: 1rem; max-width: 380px; }
+.field label { display: block; margin-bottom: 0.25rem; font-weight: 500; }
+.error { color: #dc2626; font-size: 0.8rem; display: block; }
+.array-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+.checkbox label { font-weight: normal; display: flex; align-items: center; gap: 0.4rem; }

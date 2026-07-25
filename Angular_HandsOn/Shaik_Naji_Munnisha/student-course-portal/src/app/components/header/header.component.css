@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #3f3fb0;
+  color: #fff;
+  padding: 1.1rem 2rem;
+}
+.brand {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+.links a:hover { opacity: 1; }
+.links a.active { opacity: 1; font-weight: 600; text-decoration: underline; }

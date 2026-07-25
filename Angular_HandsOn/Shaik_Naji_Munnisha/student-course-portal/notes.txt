@@ -1,0 +1,15 @@
+Hands-On 1 - Task 1, Step 2: Purpose of key generated files
+
+angular.json        - Workspace/build configuration: build targets, budgets, assets, styles for the CLI.
+tsconfig.json        - Base TypeScript compiler options shared across the whole workspace.
+tsconfig.app.json    - TypeScript config specific to compiling the browser application bundle.
+package.json         - Project metadata, npm scripts, and dependency versions.
+src/main.ts           - Application entry point; bootstraps the root standalone AppComponent with appConfig.
+src/app/app.config.ts - Standalone app configuration (providers): router, HttpClient, NgRx store, animations.
+src/app/app.component.ts - Root component; hosts <app-header> and <router-outlet> for the whole SPA shell.
+src/index.html        - The single HTML page Angular bootstraps into (<app-root>).
+
+Hands-On 1 - Task 1, Step 5: angular.json production budgets
+"maximumWarning" logs a build warning once the bundle exceeds the size threshold.
+"maximumError" fails the production build once the bundle exceeds that (larger) threshold.
+These protect the app from silently shipping an oversized JS bundle to users.
